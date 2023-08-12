@@ -5,12 +5,12 @@ import productController from '../controller/productController.js'
 const publicApi = new express.Router()
 
 publicApi.get('/', (req, res) => {
-    res.send('Hello World!')
+    res.send('public api!')
 })
 
-publicApi.post('/login', userController.login)
+// publicApi.post('/login', userController.login)
 
-publicApi.get('/product', productController.get)
+// publicApi.get('/product', productController.get)
 
 export {
     publicApi

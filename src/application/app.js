@@ -23,6 +23,10 @@ app.use((req, res, next) => {
     next();
 });
   
+app.get('/', (req, res) => {
+  res.send('public api!')
+})
+
 app.use("/api/v1/member",publicApi)
 // app.use("/api/v1/admin",apiRouter)
 
