@@ -10,7 +10,7 @@ publicApi.get('/', (req, res) => {
 
 // publicApi.post('/login', userController.login)
 
-// publicApi.get('/product', productController.get)
+publicApi.get('/product', productController.get)
 
 export {
     publicApi
