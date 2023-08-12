@@ -30,6 +30,6 @@ app.get('/', (req, res) => {
 // app.use(apiRouter)
 
 
-app.use(errorMiddleware)
+// app.use(errorMiddleware)
 
 
