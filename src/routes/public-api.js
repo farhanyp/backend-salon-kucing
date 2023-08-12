@@ -11,7 +11,7 @@ publicApi.get('/', (req, res) => {
 
 // publicApi.post('/api/v1/member/login', userController.login)
 
-publicApi.get('/api/v1/member/product', productController.get)
+publicApi.get('/product', productController.get)
 
 export {
     publicApi
