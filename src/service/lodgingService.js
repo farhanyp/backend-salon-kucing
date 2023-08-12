@@ -1,7 +1,7 @@
 import { logger } from "../application/logger.js"
 import { Lodging } from "../model/Lodging.js"
 import { User } from "../model/User.js"
-import { createLodgingValidation, getLodgingValidation, removeLodgingValidation, updateLodgingValidation } from "../validation/Lodging-validation.js"
+import { createLodgingValidation, getLodgingValidation, removeLodgingValidation, updateLodgingValidation } from "../validation/lodging-validation.js"
 import { validate } from "../validation/validation.js"
 
 const create = async (username, request) => {
