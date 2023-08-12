@@ -8,7 +8,7 @@ publicApi.get('/', (req, res) => {
     res.send('public api!')
 })
 
-// publicApi.post('/login', userController.login)
+publicApi.post('/login', userController.login)
 
 publicApi.get('/product', productController.get)
 
