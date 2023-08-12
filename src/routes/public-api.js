@@ -2,7 +2,7 @@ import express from 'express'
 import userController from '../controller/userController.js'
 import productController from '../controller/productController.js'
 
-const publicApi = new express.Router()
+// const publicApi = new express.Router()
 const app = express();
 
 app.get('/', (req, res) => {
