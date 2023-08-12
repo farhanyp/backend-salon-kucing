@@ -8,26 +8,26 @@ import lodgingController from '../controller/lodgingController.js'
 const apiRouter = new express.Router()
 
 apiRouter.use(authMiddleware)
-apiRouter.post('/api/v1/admin/category/create', categoryController.create)
-apiRouter.get('/api/v1/admin/categories', categoryController.get)
-apiRouter.patch('/api/v1/admin/category/:categoryId', categoryController.update)
-apiRouter.delete('/api/v1/admin/category/:categoryId', categoryController.remove)
+apiRouter.post('/category/create', categoryController.create)
+apiRouter.get('/categories', categoryController.get)
+apiRouter.patch('/category/:categoryId', categoryController.update)
+apiRouter.delete('/category/:categoryId', categoryController.remove)
 
 
-apiRouter.post('/api/v1/admin/product/create', productController.create)
-apiRouter.get('/api/v1/admin/product', productController.get)
-apiRouter.patch('/api/v1/admin/product/:productId', productController.update)
-apiRouter.delete('/api/v1/admin/product/:productId', productController.remove)
+apiRouter.post('/product/create', productController.create)
+apiRouter.get('/product', productController.get)
+apiRouter.patch('/product/:productId', productController.update)
+apiRouter.delete('/product/:productId', productController.remove)
 
 
-apiRouter.post('/api/v1/admin/booking/times', availableTimesController.create)
-apiRouter.get('/api/v1/admin/booking/times', availableTimesController.get)
+apiRouter.post('/booking/times', availableTimesController.create)
+apiRouter.get('/booking/times', availableTimesController.get)
 
 
-apiRouter.post('/api/v1/admin/lodging/create', lodgingController.create)
-apiRouter.get('/api/v1/admin/lodging', lodgingController.get)
-apiRouter.patch('/api/v1/admin/lodging/:lodgingId', lodgingController.update)
-apiRouter.delete('/api/v1/admin/lodging/:lodgingId', lodgingController.remove)
+apiRouter.post('/lodging/create', lodgingController.create)
+apiRouter.get('/lodging', lodgingController.get)
+apiRouter.patch('/lodging/:lodgingId', lodgingController.update)
+apiRouter.delete('/lodging/:lodgingId', lodgingController.remove)
 
 
 export {
