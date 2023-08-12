@@ -1,17 +1,17 @@
 import express from 'express'
-// import mongoose from "mongoose"
+import mongoose from "mongoose"
 // import { publicApi } from "../routes/public-api.js";
 // import { apiRouter } from "../routes/api.js";
 // import { errorMiddleware } from '../middleware/error-middleware.js'
 
 export const app = express();
-// mongoose.connect('mongodb://localhost:27017/db_salon_hewan', { useNewUrlParser: true, useUnifiedTopology: true})
-//     .then(() => {
-//         console.log('Connected to MongoDB')
-//     })
-//     .catch((err) => {
-//         console.error('Error connecting to MongoDB:', err)
-//     });
+mongoose.connect('mongodb://localhost:27017/db_salon_hewan', { useNewUrlParser: true, useUnifiedTopology: true})
+    .then(() => {
+        console.log('Connected to MongoDB')
+    })
+    .catch((err) => {
+        console.error('Error connecting to MongoDB:', err)
+    });
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
