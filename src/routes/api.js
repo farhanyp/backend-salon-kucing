@@ -1,7 +1,7 @@
 import express from 'express'
 import categoryController from '../controller/categoryController.js'
 import { authMiddleware } from '../middleware/auth-middleware.js'
-// import productController from '../controller/productController.js'
+import productController from '../controller/productController.js'
 // import availableTimesController from '../controller/availableTimesController.js'
 // import lodgingController from '../controller/lodgingController.js'
 
@@ -14,10 +14,10 @@ apiRouter.patch('/category/:categoryId', categoryController.update)
 apiRouter.delete('/category/:categoryId', categoryController.remove)
 
 
-// apiRouter.post('/product/create', productController.create)
-// apiRouter.get('/product', productController.get)
-// apiRouter.patch('/product/:productId', productController.update)
-// apiRouter.delete('/product/:productId', productController.remove)
+apiRouter.post('/product/create', productController.create)
+apiRouter.get('/product', productController.get)
+apiRouter.patch('/product/:productId', productController.update)
+apiRouter.delete('/product/:productId', productController.remove)
 
 
 // apiRouter.post('/booking/times', availableTimesController.create)
