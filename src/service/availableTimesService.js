@@ -1,5 +1,5 @@
 import { logger } from "../application/logger.js"
-import { AvailableTimes } from "../model/availableTime.js"
+import { AvailableTimes } from "../model/AvailableTime.js"
 import { User } from "../model/User.js"
 import { createAvailableTimesValidation, getAvailableTimesValidation } from "../validation/available-times-validation.js"
 import { validate } from "../validation/validation.js"
