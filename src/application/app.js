@@ -1,6 +1,6 @@
 import express from 'express'
 // import mongoose from "mongoose"
-// import { publicApi } from "../routes/public-api.js";
+import { publicApi } from "../routes/public-api.js";
 // import { apiRouter } from "../routes/api.js";
 // import { errorMiddleware } from '../middleware/error-middleware.js'
 
@@ -26,10 +26,10 @@ app.use((req, res, next) => {
 app.get('/', (req, res) => {
     res.send('Hello World!')
 })
-// app.use(publicApi)
+app.use(publicApi)
 // app.use(apiRouter)
 
 
-// app.use(errorMiddleware)
+app.use(errorMiddleware)
 
 
