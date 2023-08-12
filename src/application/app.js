@@ -2,7 +2,7 @@ import express from 'express'
 import mongoose from "mongoose"
 import { publicApi } from "../routes/public-api.js";
 // import { apiRouter } from "../routes/api.js";
-// import { errorMiddleware } from '../middleware/error-middleware.js'
+import { errorMiddleware } from '../middleware/error-middleware.js'
 
 export const app = express();
 mongoose.connect('mongodb+srv://andrianirahma1:medan122500@cluster0.lf6xcgs.mongodb.net/db_salon_hewan', { useNewUrlParser: true, useUnifiedTopology: true})
@@ -31,6 +31,6 @@ app.use("/api/v1/member",publicApi)
 // app.use("/api/v1/admin",apiRouter)
 
 
-// app.use(errorMiddleware)
+app.use(errorMiddleware)
 
 
