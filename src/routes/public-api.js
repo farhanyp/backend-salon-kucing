@@ -3,8 +3,9 @@ import userController from '../controller/userController.js'
 import productController from '../controller/productController.js'
 
 const publicApi = new express.Router()
+const app = express();
 
-publicApi.get('/', (req, res) => {
+app.get('/', (req, res) => {
     res.send('Hello World!')
 })
 
