@@ -24,7 +24,7 @@ app.use((req, res, next) => {
 });
   
 app.use("/api/v1/member",publicApi)
-app.use("/api/v1/admin",apiRouter)
+// app.use("/api/v1/admin",apiRouter)
 
 
 // app.use(errorMiddleware)
