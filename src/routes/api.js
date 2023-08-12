@@ -9,9 +9,9 @@ const apiRouter = new express.Router()
 
 apiRouter.use(authMiddleware)
 apiRouter.post('/category/create', categoryController.create)
-// apiRouter.get('/categories', categoryController.get)
-// apiRouter.patch('/category/:categoryId', categoryController.update)
-// apiRouter.delete('/category/:categoryId', categoryController.remove)
+apiRouter.get('/categories', categoryController.get)
+apiRouter.patch('/category/:categoryId', categoryController.update)
+apiRouter.delete('/category/:categoryId', categoryController.remove)
 
 
 // apiRouter.post('/product/create', productController.create)
