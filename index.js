@@ -5,13 +5,13 @@ import { publicApi } from "./src/routes/public-api.js";
 import { apiRouter } from "./src/routes/api.js";
 
 const app = express();
-mongoose.connect('mongodb://localhost:27017/db_salon_hewan', { useNewUrlParser: true, useUnifiedTopology: true})
-    .then(() => {
-        console.log('Connected to MongoDB')
-    })
-    .catch((err) => {
-        console.error('Error connecting to MongoDB:', err)
-    });
+// mongoose.connect('mongodb://localhost:27017/db_salon_hewan', { useNewUrlParser: true, useUnifiedTopology: true})
+//     .then(() => {
+//         console.log('Connected to MongoDB')
+//     })
+//     .catch((err) => {
+//         console.error('Error connecting to MongoDB:', err)
+//     });
 
 app.use(express.json());
 
