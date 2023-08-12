@@ -22,13 +22,13 @@ app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
     next();
   });
-
+  
+  app.get('/', (req, res) => {
+      res.send('Hello World!')
+    })
 app.use(publicApi)
 app.use(apiRouter)
 
-app.get('/', (req, res) => {
-    res.send('Hello World!')
-  })
 
 app.use(errorMiddleware)
 
