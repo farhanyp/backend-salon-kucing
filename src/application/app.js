@@ -5,7 +5,7 @@ import mongoose from "mongoose"
 // import { errorMiddleware } from '../middleware/error-middleware.js'
 
 export const app = express();
-mongoose.connect('mongodb://localhost:27017/db_salon_hewan', { useNewUrlParser: true, useUnifiedTopology: true})
+mongoose.connect('mongodb+srv://andrianirahma1:medan122500@cluster0.lf6xcgs.mongodb.net/db_salon_hewan', { useNewUrlParser: true, useUnifiedTopology: true})
     .then(() => {
         console.log('Connected to MongoDB')
     })
