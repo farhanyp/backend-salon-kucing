@@ -4,9 +4,13 @@ import productController from '../controller/productController.js'
 
 const publicApi = new express.Router()
 
-publicApi.post('/api/v1/member/login', userController.login)
+publicApi.get('/', (req, res) => {
+    res.send('Hello World!')
+})
 
-publicApi.get('/api/v1/member/product', productController.get)
+// publicApi.post('/api/v1/member/login', userController.login)
+
+// publicApi.get('/api/v1/member/product', productController.get)
 
 export {
     publicApi

@@ -23,9 +23,9 @@ app.use((req, res, next) => {
     next();
   });
   
-app.get('/', (req, res) => {
-    res.send('Hello World!')
-})
+// app.get('/', (req, res) => {
+//     res.send('Hello World!')
+// })
 app.use(publicApi)
 // app.use(apiRouter)
 
