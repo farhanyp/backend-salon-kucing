@@ -27,7 +27,8 @@ const create = async (username, request) => {
 
 const get = async () => {
 
-    return await Product.find()
+    // return await Product.find()
+    return "ini get"
 }
 
 
