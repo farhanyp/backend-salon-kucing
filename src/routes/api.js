@@ -1,5 +1,5 @@
 import express from 'express'
-// import categoryController from '../controller/categoryController.js'
+import categoryController from '../controller/categoryController.js'
 import { authMiddleware } from '../middleware/auth-middleware.js'
 // import productController from '../controller/productController.js'
 // import availableTimesController from '../controller/availableTimesController.js'
@@ -8,7 +8,7 @@ import { authMiddleware } from '../middleware/auth-middleware.js'
 const apiRouter = new express.Router()
 
 apiRouter.use(authMiddleware)
-// apiRouter.post('/category/create', categoryController.create)
+apiRouter.post('/category/create', categoryController.create)
 // apiRouter.get('/categories', categoryController.get)
 // apiRouter.patch('/category/:categoryId', categoryController.update)
 // apiRouter.delete('/category/:categoryId', categoryController.remove)
