@@ -6,8 +6,8 @@ app.get('/', (req, res) => {
     res.send('Hello World!')
 })
 
-app.use(publicApi)
-app.use(apiRouter)
+// app.use(publicApi)
+// app.use(apiRouter)
 
 app.listen(3000, () => console.log('Sever Running On port 3000'))
 
