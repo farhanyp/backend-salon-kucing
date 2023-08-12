@@ -25,6 +25,11 @@ app.use((req, res, next) => {
 
 app.use(publicApi)
 app.use(apiRouter)
+
+app.get('/', (req, res) => {
+    res.send('Hello World!')
+  })
+
 app.use(errorMiddleware)
 
 
