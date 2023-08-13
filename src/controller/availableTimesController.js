@@ -17,9 +17,8 @@ const create = async (req, res, next) => {
 
 const get = async (req, res, next) => {
     try{
-        const username = req.user.username
 
-        const result = await availableTimesService.get(username)
+        const result = await availableTimesService.get()
 
         res.status(200).json({
             data: result

@@ -22,15 +22,6 @@ const create = async (username, request) => {
 
 const get = async (username) => {
 
-    const createRequest = validate(getAvailableTimesValidation, username)
-
-    const user = await User.findOne({username: username})
-
-    if(!user){
-        throw new ResponseError(404, "Account not found")
-    }
-
-
     return AvailableTimes.find()
 
 }

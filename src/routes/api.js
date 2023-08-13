@@ -21,8 +21,6 @@ apiRouter.delete('/product/:productId', productController.remove)
 
 
 apiRouter.post('/booking/times', availableTimesController.create)
-apiRouter.get('/booking/times', availableTimesController.get)
-
 
 apiRouter.post('/lodging/create', lodgingController.create)
 apiRouter.get('/lodging', lodgingController.get)
