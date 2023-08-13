@@ -1,6 +1,7 @@
 import Joi from "joi"
 
 const createProductValidation = Joi.object({
+    ImageName: Joi.string().max(255).optional(),
     name: Joi.string().max(255).required(),
     qty: Joi.number().min(1).required(),
     desc: Joi.string().optional(),

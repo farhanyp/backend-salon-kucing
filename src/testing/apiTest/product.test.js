@@ -7,7 +7,7 @@ import { deleteManyProduct, closedMongoDB, createManyCategory, getManyCategory, 
 describe("POST /api/v1/member/product/create",()=>{
 
     beforeAll(async ()=>{
-        // await connectMongoDB()
+        await connectMongoDB()
         await createManyCategory()
     })
 
