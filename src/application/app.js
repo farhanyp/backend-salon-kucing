@@ -5,14 +5,13 @@ import { apiRouter } from "../routes/api.js";
 import { errorMiddleware } from '../middleware/error-middleware.js'
 
 export const app = express();
-const DB_URL = 'mongodb://127.0.0.1:27017/db_salon_hewan';
-mongoose.connect(DB_URL, { useNewUrlParser: true, useUnifiedTopology: true})
-.then(() => {
-    console.log('Connected to MongoDB')
-})
-.catch((err) => {
-    console.error('Error connecting to MongoDB:', err)
-});
+mongoose.connect('mongodb+srv://andrianirahma1:medan122500@cluster0.lf6xcgs.mongodb.net/db_salon_hewan', { useNewUrlParser: true, useUnifiedTopology: true})
+    .then(() => {
+        console.log('Connected to MongoDB')
+    })
+    .catch((err) => {
+        console.error('Error connecting to MongoDB:', err)
+    });
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
