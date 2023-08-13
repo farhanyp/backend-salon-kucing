@@ -8,12 +8,6 @@ const create = async (request) => {
 
     const createRequest = validate(createLodgingValidation, request)
 
-    const user = await User.findOne({username: username})
-
-    if(!user){
-        throw new ResponseError(404, "Account not found")
-    }
-
     return Lodging.create(createRequest)
 
 }
