@@ -4,7 +4,8 @@ const { ObjectId } = mongoose.Schema;
 const productSchema = new mongoose.Schema({
     ImageName: {
         type: String,
-        required: false
+        required: false,
+        default: "default.png"
     },
     name: {
         type: String,
