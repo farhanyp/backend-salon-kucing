@@ -2,6 +2,10 @@ import mongoose from "mongoose";
 const { ObjectId } = mongoose.Schema;
 
 const productSchema = new mongoose.Schema({
+    ImageName: {
+        type: String,
+        required: true
+    },
     name: {
         type: String,
         required: true
@@ -32,6 +36,10 @@ const productSchema = new mongoose.Schema({
 productSchema.pre('save', () => {
     if(!productSchema.created_at){
         productSchema.created_at = new Date()
+    }
+
+    if(!productSchema.ImageName){
+        productSchema.ImageName = "default.png"
     }
 })
 
