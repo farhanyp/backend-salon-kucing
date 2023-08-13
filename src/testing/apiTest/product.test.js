@@ -7,7 +7,7 @@ import { deleteManyProduct, closedMongoDB, createManyCategory, getManyCategory, 
 describe("POST /api/v1/member/product/create",()=>{
 
     beforeAll(async ()=>{
-        // await connectMongoDB()
+        await connectMongoDB()
         await createManyCategory()
     })
 
@@ -21,7 +21,7 @@ describe("POST /api/v1/member/product/create",()=>{
         const getTestUser = await getUser()
         const getTestCategory = await getManyCategory()
         const result = await supertest(app)
-        .post("/api/v1/member/product/create")
+        .post("/api/v1/admin/product/create")
         .set("Authorization", getTestUser.token)
         .send({
             name: "Kucing Gaming",

@@ -6,7 +6,7 @@ const create = async (req, res, next) => {
         const request = req.body
         const username = req.user.username
 
-        const result = await productService.create()
+        const result = await productService.create(username, request)
 
         res.status(200).json({
             data: result
