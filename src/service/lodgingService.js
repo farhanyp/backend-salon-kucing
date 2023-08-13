@@ -4,7 +4,7 @@ import { User } from "../model/User.js"
 import { createLodgingValidation, getLodgingValidation, removeLodgingValidation, updateLodgingValidation } from "../validation/lodging-validation.js"
 import { validate } from "../validation/validation.js"
 
-const create = async (username, request) => {
+const create = async (request) => {
 
     const createRequest = validate(createLodgingValidation, request)
 

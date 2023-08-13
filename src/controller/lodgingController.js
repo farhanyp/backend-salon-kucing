@@ -5,9 +5,8 @@ import lodgingService from "../service/lodgingService.js"
 const create = async (req, res, next) => {
     try{
         const request = req.body
-        const username = req.user.username
 
-        const result = await lodgingService.create(username, request)
+        const result = await lodgingService.create(request)
 
         res.status(200).json({
             data: result
