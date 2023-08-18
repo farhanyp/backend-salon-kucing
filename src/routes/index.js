@@ -6,4 +6,4 @@ indexRouter.get('/', function(req, res, next) {
   res.redirect('/admin/signin')
 });
 
-module.exports = router;
+export {indexRouter};

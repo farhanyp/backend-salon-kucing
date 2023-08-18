@@ -9,6 +9,7 @@
     import cookieParser from 'cookie-parser';
     import flash from 'connect-flash'
     import cookieSession from 'cookie-session'
+import { indexRouter } from '../routes/index.js';
 
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename,"..");
@@ -46,6 +47,7 @@
         next();
     });
 
+    app.use(indexRouter)
     app.use(adminRouter)
     app.use("/api/v1/member",publicApi)
     app.use("/api/v1/admin",apiRouter)
