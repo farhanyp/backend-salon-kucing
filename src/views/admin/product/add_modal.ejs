@@ -9,11 +9,24 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="/admin/category/create" method="post">
+            <form action="/admin/product/create" method="post">
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="name">Name</label>
-                        <input type="text" class="form-control" name="name" placeholder="Enter name" required>
+                        <input type="text" class="form-control name" name="name" placeholder="Enter name" required>
+                        <label for="qty">Qty</label>
+                        <input type="number" class="form-control qty" name="qty" placeholder="Enter qty" required>
+                        <label for="desc">Description</label>
+                        <input type="text" class="form-control desc" name="desc" placeholder="Enter desc">
+                        <label for="price">Price</label>
+                        <input type="number" class="form-control price" name="price" placeholder="Enter price" required>
+                        <label for="categoryId">Category</label>
+                        <select type="text" class="form-control" name="categoryId">
+                            <option value="">--- Category ---</option>
+                            <% for( let index=0; index < category.length; index++ ) { %>
+                                <option value="<%= category[index].id %>"><%= category[index].name %></option>
+                            <% } %>
+                        </select>
                     </div>
                 </div>
                 <div class="modal-footer">

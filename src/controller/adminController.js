@@ -180,11 +180,13 @@ const viewProduct = async (req, res, next) => {
     try{
 
         const product = await Product.find().populate('categoryId').exec()
+        const category = await Category.find()
         const alertMessage = req.flash('alertMessage')
         const alertStatus = req.flash('alertStatus')
         const alert = { message: alertMessage, status: alertStatus}
         res.render('admin/product/view_product.ejs',{
             product: product,
+            category: category,
             alert: alert,
             title: "Staycation | Product",
         })
@@ -192,7 +194,107 @@ const viewProduct = async (req, res, next) => {
     }catch(error){
         req.flash('alertMessage', `${error.message}`)
         req.flash('alertStatus', 'danger')
-        res.redirect('/admin/login')
+        res.redirect('/admin/product')
+    }
+}
+
+
+const editProduct = async (req, res, next) => {
+
+    try{
+
+        const request = req.body
+        const productId = req.body.id
+
+        logger.info(productId)
+        
+        const data = {}
+        if(request.name){
+            data.name = request.name
+        }
+    
+        if(request.qty){
+            data.qty = request.qty
+        }
+    
+        if(request.desc){
+            data.desc = request.desc
+        }
+    
+        if(request.price){
+            data.price = request.price
+        } 
+
+        const product = await Product.findOne({ _id: productId });
+
+        if (request.categoryId) {
+            if(product.categoryId != request.categoryId){
+    
+                await Category.updateOne({_id: product.categoryId}, {$pull:{productId: productId}})
+    
+                await Category.updateOne({_id: request.categoryId}, {$push:{productId: productId}})
+    
+            }
+    
+            data.categoryId = request.categoryId;
+        } 
+
+        await Product.findByIdAndUpdate(productId, data)
+
+        req.flash('alertMessage', 'Success Add Category')
+        req.flash('alertStatus', 'success')
+        res.redirect('/admin/product')
+
+    }catch(error){
+        req.flash('alertMessage', `${error.message}`)
+        req.flash('alertStatus', 'danger')
+        res.redirect('/admin/category')
+    }
+}
+
+
+const addProduct = async (req, res, next) => {
+
+    try{
+
+        const request = req.body
+        const product =  await Product.create(request)
+
+        if(request.categoryId){
+            await Category.findOneAndUpdate({_id: request.categoryId}, {$push: {productId: product._id}})
+        }
+
+        req.flash('alertMessage', 'Success Add Product')
+        req.flash('alertStatus', 'success')
+        res.redirect('/admin/product')
+
+    }catch(error){
+        req.flash('alertMessage', `${error.message}`)
+        req.flash('alertStatus', 'danger')
+        res.redirect('/admin/product')
+    }
+}
+
+
+const deleteProduct = async (req, res, next) => {
+
+    try{
+
+        const productId = req.body.productId
+        const product = await Product.findOne({_id: productId})
+
+        await Category.updateOne({_id: product.categoryId}, {$pull:{productId: productId}})
+        await Product.deleteOne({_id: productId})
+        
+
+        req.flash('alertMessage', 'Success Delete Category')
+        req.flash('alertStatus', 'success')
+        res.redirect('/admin/product/')
+
+    }catch(error){
+        req.flash('alertMessage', `${error.message}`)
+        req.flash('alertStatus', 'danger')
+        res.redirect('/admin/product/')
     }
 }
 
@@ -206,5 +308,8 @@ export default{
     addCategory,
     editCategory,
     deleteCategory,
-    viewProduct
+    viewProduct,
+    addProduct,
+    editProduct,
+    deleteProduct
 }

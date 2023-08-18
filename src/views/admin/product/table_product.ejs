@@ -46,7 +46,12 @@
                                     <input type="hidden" class="form-control" name="productId" placeholder="Enter name" value= "<%= product[index].id %>">
                                     <a href="javascript:void();" type="button"
                                         class="btn btn-warning btn-circle btn-sm button-update"
-                                        data-id="<%= product[index].id %>" data-name="<%= product[index].name %>"><i
+                                        data-id="<%= product[index].id %>"
+                                        data-name="<%= product[index].name%>" 
+                                        data-qty="<%= product[index].qty %>"
+                                        data-desc="<%= product[index].desc %>"
+                                        data-price="<%= product[index].price %>"
+                                        data-categoryId="<%= product[index].categoryId %>"><i
                                             class="fas fa-edit"></i></a>
                                     <button type="submit" class="btn btn-danger btn-circle btn-sm"><i
                                             class="fas fa-trash"></i></button>
