@@ -16,6 +16,9 @@ adminRouter.post('/admin/category/create', adminController.addCategory)
 adminRouter.patch('/admin/category', adminController.editCategory)
 adminRouter.delete('/admin/category/:categoryId', adminController.deleteCategory)
 
+
+adminRouter.get('/admin/product', adminController.viewProduct)
+
 export{
     adminRouter
 }

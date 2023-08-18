@@ -1,0 +1,61 @@
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add-modal">
+            <i class="fas fa-plus"></i>
+        </button>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Name</th>
+                        <th>qty</th>
+                        <th>desc</th>
+                        <th>price</th>
+                        <th>Category</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for( let index=0; index < product.length; index++ ) { %>
+                        <tr>
+                            <td>
+                                <%= index + 1 %>
+                            </td>
+                            <td>
+                                <%= product[index].name %>
+                            </td>
+                            <td>
+                                <%= product[index].qty %>
+                            </td>
+                            <td>
+                                <%= product[index].desc %>
+                            </td>
+                            <td>
+                                <%= product[index].price %>
+                            </td>
+                            <td>
+                                <%= product[index].categoryId.name %>
+                            </td>
+                            <td>
+                                <form action="/admin/product/<%= product[index].id %>?_method=DELETE" method="post">
+                                    <input type="hidden" class="form-control" name="productId" placeholder="Enter name" value= "<%= product[index].id %>">
+                                    <a href="javascript:void();" type="button"
+                                        class="btn btn-warning btn-circle btn-sm button-update"
+                                        data-id="<%= product[index].id %>" data-name="<%= product[index].name %>"><i
+                                            class="fas fa-edit"></i></a>
+                                    <button type="submit" class="btn btn-danger btn-circle btn-sm"><i
+                                            class="fas fa-trash"></i></button>
+                                </form>
+                            </td>
+                        </tr>
+                        <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

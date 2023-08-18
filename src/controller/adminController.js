@@ -175,6 +175,27 @@ const deleteCategory = async (req, res, next) => {
     }
 }
 
+const viewProduct = async (req, res, next) => {
+
+    try{
+
+        const product = await Product.find().populate('categoryId').exec()
+        const alertMessage = req.flash('alertMessage')
+        const alertStatus = req.flash('alertStatus')
+        const alert = { message: alertMessage, status: alertStatus}
+        res.render('admin/product/view_product.ejs',{
+            product: product,
+            alert: alert,
+            title: "Staycation | Product",
+        })
+
+    }catch(error){
+        req.flash('alertMessage', `${error.message}`)
+        req.flash('alertStatus', 'danger')
+        res.redirect('/admin/login')
+    }
+}
+
 
 export default{
     viewSignIn,
@@ -184,5 +205,6 @@ export default{
     viewCategory,
     addCategory,
     editCategory,
-    deleteCategory
+    deleteCategory,
+    viewProduct
 }
