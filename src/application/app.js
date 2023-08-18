@@ -9,7 +9,8 @@
     import cookieParser from 'cookie-parser';
     import flash from 'connect-flash'
     import cookieSession from 'cookie-session'
-import { indexRouter } from '../routes/index.js';
+    import { indexRouter } from '../routes/index.js';
+    import methodOverride from 'method-override'
 
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename,"..");
@@ -39,6 +40,7 @@ import { indexRouter } from '../routes/index.js';
     app.use(express.static(publicPath));
     app.use('/sb-admin-2', express.static(SBPath));
     app.use(cookieParser());
+    app.use(methodOverride('_method'))  
 
     app.use((req, res, next) => {
         res.setHeader('Access-Control-Allow-Origin', '*');

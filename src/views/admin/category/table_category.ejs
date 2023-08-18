@@ -27,6 +27,7 @@
                             </td>
                             <td>
                                 <form action="/admin/category/<%= category[index].id %>?_method=DELETE" method="post">
+                                    <input type="hidden" class="form-control" name="categoryId" placeholder="Enter name" value= "<%= category[index].id %>">
                                     <a href="javascript:void();" type="button"
                                         class="btn btn-warning btn-circle btn-sm button-update"
                                         data-id="<%= category[index].id %>" data-name="<%= category[index].name %>"><i

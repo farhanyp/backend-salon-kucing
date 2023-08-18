@@ -93,7 +93,6 @@ const viewCategory = async (req, res, next) => {
     try{
 
         const category = await Category.find({})
-        logger.info(category)
         const alertMessage = req.flash('alertMessage')
         const alertStatus = req.flash('alertStatus')
         const alert = { message: alertMessage, status: alertStatus}
@@ -110,11 +109,80 @@ const viewCategory = async (req, res, next) => {
     }
 }
 
+const addCategory = async (req, res, next) => {
+
+    try{
+
+        const name = req.body.name
+        await Category.create({name})
+
+        req.flash('alertMessage', 'Success Add Category')
+        req.flash('alertStatus', 'success')
+        res.redirect('/admin/category')
+
+    }catch(error){
+        req.flash('alertMessage', `${error.message}`)
+        req.flash('alertStatus', 'danger')
+        res.redirect('/admin/category')
+    }
+}
+
+const editCategory = async (req, res, next) => {
+
+    try{
+
+        const name = req.body.name
+        const categoryId = req.body.id
+        
+        const data = {}
+        if(name){
+            data.name = name
+        }
+
+        // if (request.productId) {
+        //     data.productId = updateRequest.productId;
+        // }
+
+        await Category.findByIdAndUpdate(categoryId, data)
+
+        req.flash('alertMessage', 'Success Add Category')
+        req.flash('alertStatus', 'success')
+        res.redirect('/admin/category')
+
+    }catch(error){
+        req.flash('alertMessage', `${error.message}`)
+        req.flash('alertStatus', 'danger')
+        res.redirect('/admin/category')
+    }
+}
+
+
+const deleteCategory = async (req, res, next) => {
+
+    try{
+
+        const categoryId = req.body.categoryId
+        await Category.deleteOne({_id: categoryId})
+
+        req.flash('alertMessage', 'Success Delete Category')
+        req.flash('alertStatus', 'success')
+        res.redirect('/admin/category')
+
+    }catch(error){
+        req.flash('alertMessage', `${error.message}`)
+        req.flash('alertStatus', 'danger')
+        res.redirect('/admin/category')
+    }
+}
+
 
 export default{
     viewSignIn,
     actionSignIn,
     viewDashboard,
     actionLogout,
-    viewCategory
+    viewCategory,
+    addCategory,
+    editCategory,
+    deleteCategory
 }

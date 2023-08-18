@@ -12,6 +12,9 @@ adminRouter.get('/admin/logout', adminController.actionLogout)
 adminRouter.get('/admin/dashboard', adminController.viewDashboard)
 
 adminRouter.get('/admin/category', adminController.viewCategory)
+adminRouter.post('/admin/category/create', adminController.addCategory)
+adminRouter.patch('/admin/category', adminController.editCategory)
+adminRouter.delete('/admin/category/:categoryId', adminController.deleteCategory)
 
 export{
     adminRouter
