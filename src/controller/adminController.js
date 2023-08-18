@@ -1,6 +1,7 @@
 import { logger } from "../application/logger.js"
 import { AvailableTimes } from "../model/AvailableTime.js"
 import { Lodging } from "../model/Lodging.js"
+import { Category } from "../model/Category.js"
 import { Product } from "../model/Product.js"
 import { User } from "../model/User.js"
 import bcrypt from 'bcrypt'
@@ -87,9 +88,33 @@ const viewDashboard = async (req, res, next) => {
     }
 }
 
+const viewCategory = async (req, res, next) => {
+
+    try{
+
+        const category = await Category.find({})
+        logger.info(category)
+        const alertMessage = req.flash('alertMessage')
+        const alertStatus = req.flash('alertStatus')
+        const alert = { message: alertMessage, status: alertStatus}
+        res.render('admin/category/view_category.ejs',{
+            category: category,
+            alert: alert,
+            title: "Staycation | Category",
+        })
+
+    }catch(error){
+        req.flash('alertMessage', `${error.message}`)
+        req.flash('alertStatus', 'danger')
+        res.redirect('/admin/login')
+    }
+}
+
+
 export default{
     viewSignIn,
     actionSignIn,
     viewDashboard,
-    actionLogout
+    actionLogout,
+    viewCategory
 }

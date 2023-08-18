@@ -11,6 +11,8 @@ adminRouter.use(isLogin)
 adminRouter.get('/admin/logout', adminController.actionLogout)
 adminRouter.get('/admin/dashboard', adminController.viewDashboard)
 
+adminRouter.get('/admin/category', adminController.viewCategory)
+
 export{
     adminRouter
 }

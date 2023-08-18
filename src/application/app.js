@@ -47,10 +47,10 @@ import { indexRouter } from '../routes/index.js';
         next();
     });
 
-    app.use(indexRouter)
-    app.use(adminRouter)
     app.use("/api/v1/member",publicApi)
     app.use("/api/v1/admin",apiRouter)
+    app.use(indexRouter)
+    app.use(adminRouter)
 
 
     app.use(errorMiddleware)
