@@ -1,6 +1,7 @@
 import express from 'express'
 import adminController from '../controller/adminController.js'
 import { isLogin } from '../middleware/admin/auth-middleware.js'
+import { uploadSingle } from '../middleware/admin/multer-middleware.js'
 
 
 const adminRouter = express.Router()
@@ -18,8 +19,8 @@ adminRouter.delete('/admin/category/:categoryId', adminController.deleteCategory
 
 
 adminRouter.get('/admin/product', adminController.viewProduct)
-adminRouter.post('/admin/product/create', adminController.addProduct)
-adminRouter.patch('/admin/product', adminController.editProduct)
+adminRouter.post('/admin/product/create', uploadSingle, adminController.addProduct)
+adminRouter.patch('/admin/product', uploadSingle, adminController.editProduct)
 adminRouter.delete('/admin/product/:productId', adminController.deleteProduct)
 
 

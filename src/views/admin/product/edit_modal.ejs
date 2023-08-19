@@ -9,9 +9,11 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="/admin/product?_method=patch" method="post">
+            <form action="/admin/product?_method=patch" method="post" enctype="multipart/form-data">
                 <div class="modal-body">
                     <div class="form-group">
+                        <label for="ImageName">Image</label>
+                        <input type="file" class="form-control" name="image">
                         <label for="name">Name</label>
                         <input type="text" class="form-control name" name="name" placeholder="Enter name" required>
                         <label for="qty">Qty</label>
@@ -21,7 +23,7 @@
                         <label for="price">Price</label>
                         <input type="number" class="form-control price" name="price" placeholder="Enter price" required>
                         <label for="categoryId">Category</label>
-                        <select type="text" class="form-control" name="categoryId">
+                        <select type="text" class="form-control categoryid" name="categoryId">
                             <option value="">--- Category ---</option>
                             <% for( let index=0; index < category.length; index++ ) { %>
                                 <option value="<%= category[index].id %>"><%= category[index].name %></option>

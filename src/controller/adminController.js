@@ -7,6 +7,8 @@ import { User } from "../model/User.js"
 import bcrypt from 'bcrypt'
 import { v4 as uuid } from "uuid"
 import { format } from 'date-fns';
+import fs from 'fs-extra'
+import path from 'path'
 
 const viewSignIn = async (req, res, next) => {
 
@@ -206,8 +208,6 @@ const editProduct = async (req, res, next) => {
 
         const request = req.body
         const productId = req.body.id
-
-        logger.info(productId)
         
         const data = {}
         if(request.name){
@@ -224,9 +224,16 @@ const editProduct = async (req, res, next) => {
     
         if(request.price){
             data.price = request.price
-        } 
+        }
 
         const product = await Product.findOne({ _id: productId });
+        console.log(product)
+
+        if(req.file){
+            await fs.unlink(path.join(`src/public/${product.ImageName}`))
+            data.ImageName = `images/${req.file.filename}`
+        } 
+
 
         if (request.categoryId) {
             if(product.categoryId != request.categoryId){
@@ -257,9 +264,17 @@ const editProduct = async (req, res, next) => {
 const addProduct = async (req, res, next) => {
 
     try{
-
         const request = req.body
-        const product =  await Product.create(request)
+
+        const data = {
+            ImageName: `images/${req.file.filename}`,
+            name: request.name,
+            qty: request.qty,
+            desc: request.desc,
+            price: request.price,
+            categoryId: request.categoryId,
+        }
+        const product =  await Product.create(data)
 
         if(request.categoryId){
             await Category.findOneAndUpdate({_id: request.categoryId}, {$push: {productId: product._id}})
@@ -283,6 +298,7 @@ const deleteProduct = async (req, res, next) => {
 
         const productId = req.body.productId
         const product = await Product.findOne({_id: productId})
+        await fs.unlink(path.join(`src/public/${product.ImageName}`))
 
         await Category.updateOne({_id: product.categoryId}, {$pull:{productId: productId}})
         await Product.deleteOne({_id: productId})

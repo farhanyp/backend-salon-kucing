@@ -9,9 +9,11 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="/admin/product/create" method="post">
+            <form action="/admin/product/create" method="post" enctype="multipart/form-data">
                 <div class="modal-body">
                     <div class="form-group">
+                        <label for="ImageName">Image</label>
+                        <input type="file" class="form-control" name="image">
                         <label for="name">Name</label>
                         <input type="text" class="form-control name" name="name" placeholder="Enter name" required>
                         <label for="qty">Qty</label>
