@@ -22,6 +22,19 @@ adminRouter.post('/admin/product/create', adminController.addProduct)
 adminRouter.patch('/admin/product', adminController.editProduct)
 adminRouter.delete('/admin/product/:productId', adminController.deleteProduct)
 
+
+adminRouter.get('/admin/available-times', adminController.viewAvailableTimes)
+adminRouter.post('/admin/available-times/create', adminController.addAvailableTimes)
+adminRouter.delete('/admin/available-times/:timesId', adminController.deleteAvailableTimes)
+
+
+adminRouter.get('/admin/booking', adminController.viewBooking) 
+adminRouter.patch('/admin/booking', adminController.editBooking)
+adminRouter.delete('/admin/booking/:bookingId', adminController.deleteBooking)
+
+
+adminRouter.get('/admin/history-booking', adminController.viewHistoryBooking)
+
 export{
     adminRouter
 }
