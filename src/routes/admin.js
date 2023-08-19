@@ -1,7 +1,6 @@
 import express from 'express'
 import adminController from '../controller/adminController.js'
 import { isLogin } from '../middleware/admin/auth-middleware.js'
-import { uploadSingle } from '../middleware/admin/multer-middleware.js'
 
 
 const adminRouter = express.Router()

@@ -7,8 +7,6 @@ import { User } from "../model/User.js"
 import bcrypt from 'bcrypt'
 import { v4 as uuid } from "uuid"
 import { format } from 'date-fns';
-import fs from 'fs-extra'
-import path from 'path'
 
 const viewSignIn = async (req, res, next) => {
 
