@@ -202,6 +202,65 @@ const viewProduct = async (req, res, next) => {
 }
 
 
+// const editProduct = async (req, res, next) => {
+
+//     try{
+
+//         const request = req.body
+//         const productId = req.body.id
+        
+//         const data = {}
+//         if(request.name){
+//             data.name = request.name
+//         }
+    
+//         if(request.qty){
+//             data.qty = request.qty
+//         }
+    
+//         if(request.desc){
+//             data.desc = request.desc
+//         }
+    
+//         if(request.price){
+//             data.price = request.price
+//         }
+
+//         const product = await Product.findOne({ _id: productId });
+//         console.log(product)
+
+//         if(req.file){
+//             await fs.unlink(path.join(`src/public/${product.ImageName}`))
+//             data.ImageName = `images/${req.file.filename}`
+//         } 
+
+
+//         if (request.categoryId) {
+//             if(product.categoryId != request.categoryId){
+    
+//                 await Category.updateOne({_id: product.categoryId}, {$pull:{productId: productId}})
+    
+//                 await Category.updateOne({_id: request.categoryId}, {$push:{productId: productId}})
+    
+//             }
+    
+//             data.categoryId = request.categoryId;
+//         } 
+
+//         await Product.findByIdAndUpdate(productId, data)
+
+//         req.flash('alertMessage', 'Success Add Category')
+//         req.flash('alertStatus', 'success')
+//         res.redirect('/admin/product')
+
+//     }catch(error){
+//         req.flash('alertMessage', `${error.message}`)
+//         req.flash('alertStatus', 'danger')
+//         res.redirect('/admin/category')
+//     }
+// }
+
+
 const editProduct = async (req, res, next) => {
 
     try{
@@ -226,14 +285,7 @@ const editProduct = async (req, res, next) => {
             data.price = request.price
         }
 
-        const product = await Product.findOne({ _id: productId });
-        console.log(product)
-
-        if(req.file){
-            await fs.unlink(path.join(`src/public/${product.ImageName}`))
-            data.ImageName = `images/${req.file.filename}`
-        } 
-
+        const product = await Product.findOne({ _id: productId }); 
 
         if (request.categoryId) {
             if(product.categoryId != request.categoryId){
@@ -261,20 +313,41 @@ const editProduct = async (req, res, next) => {
 }
 
 
+// const addProduct = async (req, res, next) => {
+
+//     try{
+//         const request = req.body
+
+//         const data = {
+//             ImageName: `images/${req.file.filename}`,
+//             name: request.name,
+//             qty: request.qty,
+//             desc: request.desc,
+//             price: request.price,
+//             categoryId: request.categoryId,
+//         }
+//         const product =  await Product.create(data)
+
+//         if(request.categoryId){
+//             await Category.findOneAndUpdate({_id: request.categoryId}, {$push: {productId: product._id}})
+//         }
+
+//         req.flash('alertMessage', 'Success Add Product')
+//         req.flash('alertStatus', 'success')
+//         res.redirect('/admin/product')
+
+//     }catch(error){
+//         req.flash('alertMessage', `${error.message}`)
+//         req.flash('alertStatus', 'danger')
+//         res.redirect('/admin/product')
+//     }
+// }
+
 const addProduct = async (req, res, next) => {
 
     try{
         const request = req.body
-
-        const data = {
-            ImageName: `images/${req.file.filename}`,
-            name: request.name,
-            qty: request.qty,
-            desc: request.desc,
-            price: request.price,
-            categoryId: request.categoryId,
-        }
-        const product =  await Product.create(data)
+        const product =  await Product.create(request)
 
         if(request.categoryId){
             await Category.findOneAndUpdate({_id: request.categoryId}, {$push: {productId: product._id}})
@@ -292,13 +365,35 @@ const addProduct = async (req, res, next) => {
 }
 
 
+// const deleteProduct = async (req, res, next) => {
+
+//     try{
+
+//         const productId = req.body.productId
+//         const product = await Product.findOne({_id: productId})
+//         await fs.unlink(path.join(`src/public/${product.ImageName}`))
+
+//         await Category.updateOne({_id: product.categoryId}, {$pull:{productId: productId}})
+//         await Product.deleteOne({_id: productId})
+        
+
+//         req.flash('alertMessage', 'Success Delete Category')
+//         req.flash('alertStatus', 'success')
+//         res.redirect('/admin/product/')
+
+//     }catch(error){
+//         req.flash('alertMessage', `${error.message}`)
+//         req.flash('alertStatus', 'danger')
+//         res.redirect('/admin/product/')
+//     }
+// }
+
 const deleteProduct = async (req, res, next) => {
 
     try{
 
         const productId = req.body.productId
         const product = await Product.findOne({_id: productId})
-        await fs.unlink(path.join(`src/public/${product.ImageName}`))
 
         await Category.updateOne({_id: product.categoryId}, {$pull:{productId: productId}})
         await Product.deleteOne({_id: productId})

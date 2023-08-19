@@ -23,6 +23,11 @@ adminRouter.delete('/admin/category/:categoryId', adminController.deleteCategory
 // adminRouter.patch('/admin/product', uploadSingle, adminController.editProduct)
 // adminRouter.delete('/admin/product/:productId', adminController.deleteProduct)
 
+adminRouter.get('/admin/product', adminController.viewProduct)
+adminRouter.post('/admin/product/create', adminController.addProduct)
+adminRouter.patch('/admin/product', adminController.editProduct)
+adminRouter.delete('/admin/product/:productId', adminController.deleteProduct)
+
 
 adminRouter.get('/admin/available-times', adminController.viewAvailableTimes)
 adminRouter.post('/admin/available-times/create', adminController.addAvailableTimes)
