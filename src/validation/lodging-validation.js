@@ -5,6 +5,7 @@ const createLodgingValidation = Joi.object({
     ownerName:      Joi.string().max(255).required(),
     phoneNumber:    Joi.string().max(255).required(),
     email:          Joi.string().max(255).email().required(),
+    service:        Joi.string().max(255).optional(),
     petName:        Joi.string().max(255).optional(),
     petTypes:       Joi.string().max(255).optional(),
     startTime:      Joi.date().required(),

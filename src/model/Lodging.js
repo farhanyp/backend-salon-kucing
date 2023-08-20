@@ -14,6 +14,10 @@ const LodgingSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    service: {
+        type: String,
+        required: false
+    },
     petName: {
         type: String,
         require: false
