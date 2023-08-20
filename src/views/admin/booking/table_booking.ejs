@@ -15,6 +15,7 @@
                         <th>Owner Name</th>
                         <th>Phone</th>
                         <th>Email</th>
+                        <th>Service</th>
                         <th>Pet name</th>
                         <th>Pet types</th>
                         <th>Start Time</th>
@@ -38,6 +39,9 @@
                             </td>
                             <td>
                                 <%= booking[index]._doc.email %>
+                            </td>
+                            <td>
+                                <%= booking[index]._doc.service %>
                             </td>
                             <td>
                                 <%= booking[index]._doc.petName %>
