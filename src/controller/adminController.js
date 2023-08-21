@@ -166,8 +166,6 @@ const deleteCategory = async (req, res, next) => {
         
         const products = await Product.find({categoryId: categoryId})
 
-        logger.info(products.length)
-        logger.info(products.length)
 
         if(!products.length == 0){
         req.flash('alertMessage', 'Tidak bisa menghapus kategori, hapus dahulu produk yang memiliki kategori berkaitan')
