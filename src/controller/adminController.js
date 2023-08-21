@@ -163,11 +163,24 @@ const deleteCategory = async (req, res, next) => {
     try{
 
         const categoryId = req.body.categoryId
-        await Category.deleteOne({_id: categoryId})
+        
+        const products = await Product.find({categoryId: categoryId})
 
-        req.flash('alertMessage', 'Success Delete Category')
-        req.flash('alertStatus', 'success')
+        logger.info(products.length)
+        logger.info(products.length)
+
+        if(!products.length == 0){
+        req.flash('alertMessage', 'Tidak bisa menghapus kategori, hapus dahulu produk yang memiliki kategori berkaitan')
+        req.flash('alertStatus', 'danger')
         res.redirect('/admin/category')
+        }else if (products.length == 0){
+            await Category.deleteOne({_id: categoryId})
+    
+            req.flash('alertMessage', 'Success Delete Category')
+            req.flash('alertStatus', 'success')
+            res.redirect('/admin/category')
+        }
+
 
     }catch(error){
         req.flash('alertMessage', `${error.message}`)
